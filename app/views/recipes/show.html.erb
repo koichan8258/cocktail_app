@@ -1,0 +1,14 @@
+<h1><%= @recipe.cocktail_name %></h1>
+
+<h2>材料</h2>
+<ul>
+  <% @recipe.materials.each do |material| %>
+    <li><%= material.material_name %> - <%= material.quantity %></li>
+  <% end %>
+</ul>
+
+<p><strong>作り方</strong></p>
+<p><%= @recipe.instruction %></p>
+
+<p>レシピ作成者：<%= @recipe.user.nickname %></p>
+<%= link_to '一覧に戻る', recipes_path %>

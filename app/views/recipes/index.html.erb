@@ -1,0 +1,38 @@
+
+<!-- 検索フォーム -->
+<%= form_tag(recipes_path, method: :get) do %>
+  <%= text_field_tag :search, params[:search], placeholder: "レシピを検索" %>
+  <%= submit_tag "検索" %>
+<% end %>
+
+<!-- レシピ追加ボタン -->
+
+
+<!-- ログインボタン -->
+<% if user_signed_in? %>
+  <div class="user_nav grid-6">
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %> 
+      <%= link_to "レシピを追加", new_recipe_path %>
+      <%= link_to " #{current_user.nickname}さん", user_path(current_user) %>
+      
+  </div>
+<% else %>
+   <div class="grid-6">
+      <%= link_to "ログイン", new_user_session_path %>
+      <%= link_to "新規登録", new_user_registration_path %>
+   </div>
+<% end %>
+<!-- 新規登録ボタン -->
+<% if current_user %>
+  <!-- ログイン中の場合、ログインボタンは表示しない -->
+<% else %>
+  <%= link_to "新規登録", new_user_registration_path %>
+<% end %>
+
+
+<% @latest_recipes.each do |recipe| %>
+  <div>
+    <%= link_to recipe.cocktail_name, recipe_path(recipe) %>
+    <!-- レシピの詳細へのリンクを表示 -->
+  </div>
+<% end %>

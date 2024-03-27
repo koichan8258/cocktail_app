@@ -71,5 +71,12 @@ group :test do
   gem "webdrivers"
 end
 
-gem 'pry-rails'
 
+
+
+gem "webpacker", "~> 5.4"
+
+
+gem 'devise'
+
+gem 'pry-rails'

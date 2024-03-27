@@ -1,0 +1,57 @@
+<%= form_with model: @recipe, local: true do |form| %>
+  <%= form.label :cocktail_name, 'カクテル名' %>
+  <%= form.text_field :cocktail_name %>
+
+<div id="materials-container">
+  <%= form.fields_for :materials do |material_form| %>
+    <div class="materials">
+      <%= material_form.label :material_name, '材料' %>
+      <%= material_form.text_field :material_name %>
+
+      <%= material_form.label :quantity, '分量' %>
+      <%= material_form.text_field :quantity %>
+    </div>
+  <% end %>
+</div>
+  
+  <%= button_tag '材料を追加する', type: 'button', id: 'add-material-button' %>
+  <%= button_tag '材料を減らす', type: 'button', id: 'remove-material-button' %>
+
+  <%= form.label :instruction, '作り方' %>
+  <%= form.text_area :instruction %>
+
+  <%= form.submit 'レシピを作成する' %>
+<% end %>
+
+<%= link_to '一覧に戻る', recipes_path %>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const addMaterialButton = document.getElementById('add-material-button');
+    const materialsContainer = document.getElementById('materials-container');
+
+    addMaterialButton.addEventListener('click', function() {
+      const materialFields = document.createElement('div');
+      materialFields.classList.add('materials');
+
+      materialFields.innerHTML = `
+        <label for="recipe_material_name">材料</label>
+        <input type="text" id="recipe_material_name" name="recipe[materials_attributes][][material_name]">
+        
+        <label for="recipe_quantity">分量</label>
+        <input type="text" id="recipe_quantity" name="recipe[materials_attributes][][quantity]">
+      `;
+
+      materialsContainer.appendChild(materialFields);
+    });
+
+    const removeMaterialButton = document.getElementById('remove-material-button');
+
+    removeMaterialButton.addEventListener('click', function() {
+      const materials = document.getElementsByClassName('materials');
+      if (materials.length > 2) {
+        materialsContainer.removeChild(materials[materials.length-1]);
+      }
+    });
+  });
+</script>

@@ -1,0 +1,6 @@
+<div class="contents row">
+  <p><%= @nickname %>さんのレシピ一覧</p>
+  <% @recipes.each do |recipe| %>
+      <p><%= link_to recipe.cocktail_name, recipe_path(recipe) %></p>
+  <% end %>
+</div>
