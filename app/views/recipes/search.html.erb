@@ -1,0 +1,21 @@
+<h3>リキュール名検索ページ</h3>
+<h3><%= link_to 'トップページへ戻る', root_path%></h3>
+<div class='recipe-contents' id="detailed-search-result-wrapper">
+<%= form_with model: @q, url: search_recipes_path, method: :get, local: true do |f| %>
+  <div class="search-field">
+    <%= f.label :material_name_cont, 'リキュール名' %>
+    <br>
+    <%= f.text_field :cocktail_name_cont %>
+  </div>
+  <%= f.submit '検索' %>
+<% end %>
+  <ul class='recipe-lists' id="detailed-search-result">
+    <% @recipe.each do |recipe| %>
+      <li class='list'>
+        <div class="posted-content">
+          <%= link_to "#{recipe.cocktail_name}", recipe_path(recipe.id)%>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>

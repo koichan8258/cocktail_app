@@ -1,14 +1,7 @@
+<%= render template: 'layouts/application' %>
 
-<!-- 検索フォーム -->
-<%= form_tag(recipes_path, method: :get) do %>
-  <%= text_field_tag :search, params[:search], placeholder: "レシピを検索" %>
-  <%= submit_tag "検索" %>
-<% end %>
+<h3><%= link_to 'リキュール検索', search_recipes_path%></h3>
 
-<!-- レシピ追加ボタン -->
-
-
-<!-- ログインボタン -->
 <% if user_signed_in? %>
   <div class="user_nav grid-6">
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %> 
@@ -19,7 +12,6 @@
 <% else %>
    <div class="grid-6">
       <%= link_to "ログイン", new_user_session_path %>
-      <%= link_to "新規登録", new_user_registration_path %>
    </div>
 <% end %>
 <!-- 新規登録ボタン -->
@@ -29,7 +21,7 @@
   <%= link_to "新規登録", new_user_registration_path %>
 <% end %>
 
-
+新規レシピ：
 <% @latest_recipes.each do |recipe| %>
   <div>
     <%= link_to recipe.cocktail_name, recipe_path(recipe) %>

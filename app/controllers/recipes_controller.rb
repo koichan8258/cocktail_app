@@ -34,6 +34,11 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
   end
 
+  def search
+    @q = Recipe.ransack(params[:q])
+    @recipe = @q.result(distinct: true)
+  end
+
   private
 
   def recipe_params
