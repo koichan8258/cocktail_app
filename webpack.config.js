@@ -1,9 +1,10 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/main.js', // エントリーポイントを指定する
+  mode: 'development', // この行を追加します。あるいは 'production' を指定します
+  entry: './app/javascript/packs/main.js', 
   output: {
-    path: path.resolve(__dirname, 'dist'), // 出力先ディレクトリを指定する
-    filename: 'bundle.js' // 出力ファイル名を指定する
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js'
   }
 };
