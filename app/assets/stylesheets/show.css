@@ -1,0 +1,21 @@
+.show-image {
+  width: 100%;
+  height: 80%;
+  opacity: 80%;
+  filter: brightness(30%);
+}
+
+.show-image-container {
+  position: relative;
+}
+
+.show-content {
+  position: absolute;
+  width: 75%;
+  height: 50%;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.8); /* 透明度を調整 */
+  padding-bottom: 20px;
+}

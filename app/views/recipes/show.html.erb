@@ -1,18 +1,35 @@
-<%= render 'layouts/header' %>
-<h1><%= @recipe.cocktail_name %></h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>カクテルレシピ</title>
+  <%= stylesheet_link_tag 'show', media: 'all', 'data-turbolinks-track': 'reload' %>
+   <%= stylesheet_link_tag 'search', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= csrf_meta_tags %>
+</head>
 
-<h2>材料</h2>
-<ul>
-  <% @recipe.materials.each do |material| %>
-    <li><%= material.material_name %> - <%= material.quantity %></li>
-  <% end %>
-</ul>
+
+<%= render 'layouts/header' %>
+
+ <div class="show-image-container">
+      <%= image_tag 'cocktail.jpg', class: 'show-image' %>
+    <div class="search-content">
+      <div class="page_title">  
+        <h1><%= @recipe.cocktail_name %></h1>
+      </div>
+      <h2>材料</h2>
+      <ul>
+       <% @recipe.materials.each do |material| %>
+       <li><%= material.material_name %> - <%= material.quantity %></li>
+         <% end %>
+        </ul>
 
 <p><strong>作り方</strong></p>
 <p><%= @recipe.instruction %></p>
 
 <p>レシピ作成者：<%= @recipe.user.nickname %></p>
-<%= link_to '一覧に戻る', recipes_path %>
+
+<%= link_to 'ホームへ戻る', root_path , class: 'return-to-top-button'%>
+</div>
 
 
 <%= render 'layouts/footer' %>
