@@ -1,3 +1,4 @@
+<%= render 'layouts/header' %>
 <h1><%= @recipe.cocktail_name %></h1>
 
 <h2>材料</h2>
@@ -12,3 +13,6 @@
 
 <p>レシピ作成者：<%= @recipe.user.nickname %></p>
 <%= link_to '一覧に戻る', recipes_path %>
+
+
+<%= render 'layouts/footer' %>

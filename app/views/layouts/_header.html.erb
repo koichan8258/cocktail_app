@@ -1,0 +1,21 @@
+<header>
+  <div class="header_contents">
+    <div class="log">
+      <%= link_to 'COCKTAIL APP', root_path  %>
+    </div>
+
+    <div class="user_content">
+      <% if user_signed_in? %>
+       <div class="user_nav">
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'logout-button' %> 
+        <%= link_to " #{current_user.nickname}さん", user_path(current_user), class: 'profile-button' %>
+       </div>
+      <% else %>
+       <div class="grid-6">
+        <%= link_to "ログイン", new_user_session_path, class: 'login-button' %>
+        <%= link_to "新規登録", new_user_registration_path, class: 'register-button' %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</header>

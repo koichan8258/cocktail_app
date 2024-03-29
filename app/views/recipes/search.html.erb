@@ -1,21 +1,61 @@
-<h3>リキュール名検索ページ</h3>
-<h3><%= link_to 'トップページへ戻る', root_path%></h3>
-<div class='recipe-contents' id="detailed-search-result-wrapper">
-<%= form_with model: @q, url: search_recipes_path, method: :get, local: true do |f| %>
-  <div class="search-field">
-    <%= f.label :material_name_cont, 'リキュール名' %>
-    <br>
-    <%= f.text_field :cocktail_name_cont %>
-  </div>
-  <%= f.submit '検索' %>
-<% end %>
-  <ul class='recipe-lists' id="detailed-search-result">
-    <% @recipe.each do |recipe| %>
-      <li class='list'>
-        <div class="posted-content">
-          <%= link_to "#{recipe.cocktail_name}", recipe_path(recipe.id)%>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>カクテル検索</title>
+  <%= stylesheet_link_tag 'search', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <header>
+    <%= render 'layouts/header' %>
+  </header>
+
+  <div class="search-image-container">
+    <%= image_tag 'cocktail_search.jpg', class: 'search-image' %>
+    <div class="search-content">
+      <div class="page_title">
+      <h3>COCKTAIL SEARCH</h3></div>
+
+      <div class='recipe-contents' id="detailed-search-result-wrapper">
+        <%= form_with model: @q, url: search_recipes_path, method: :get, local: true do |f| %>
+          <div class="search-field">
+            <%= f.label :material_name_cont, 'リキュール名', class: 'search_name' %>
+            <br>
+            <%= f.text_field :cocktail_name_cont, class: 'search_form'%>
+          <%= f.submit '検索', class: 'search_button'%>
+          </div>
+        <% end %>
+        <ul class='recipe-lists' id="detailed-search-result">
+          <% @recipe.each do |recipe| %>
+            <li class='list'>
+              <div class="posted-content">
+                <%= link_to "#{recipe.cocktail_name}", recipe_path(recipe.id), class: 'cocktail_name'%>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <div class="new-recipe-content">
+      <div class="page_title">
+      <h4>NEW COCKTAIL</h4></div>
+      <% @latest_recipes.each do |recipe| %>
+        <div>
+          <%= link_to recipe.cocktail_name, recipe_path(recipe), class: 'cocktail_name' %>
+          <!-- レシピの詳細へのリンクを表示 -->
         </div>
-      </li>
-    <% end %>
-  </ul>
-</div>
+      <% end %>
+    </div>
+
+    <div class="button-container">
+      <%= link_to 'トップページへ戻る', root_path, class: 'return-to-top-button' %>
+    </div>
+  </div>
+
+
+  <footer>
+    <%= render 'layouts/footer' %>
+  </footer>
+</body>
+</html>

@@ -1,10 +1,9 @@
 class RecipesController < ApplicationController
+  before_action :authenticate_user!, only: [:new]
   before_action :set_latest_recipes, only: [:new, :index]
-  before_action :move_to_index, except: [:index, :show]
-  skip_before_action :authenticate_user!
+  before_action :move_to_index, except: [:index, :show, :search]
   def index
     @recipes = Recipe.all
-    @latest_recipes = Recipe.order(created_at: :desc).limit(5)
   end
 
   def new
@@ -35,6 +34,7 @@ class RecipesController < ApplicationController
   end
 
   def search
+    @latest_recipes = Recipe.order(created_at: :desc).limit(5)
     @q = Recipe.ransack(params[:q])
     @recipe = @q.result(distinct: true)
   end

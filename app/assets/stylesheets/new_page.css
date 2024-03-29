@@ -1,0 +1,140 @@
+.new-image {
+  width: 100%;
+  height: 80%;
+  opacity: 80%;
+  filter: brightness(30%);
+}
+
+.search-image-container {
+  position: relative;
+}
+
+.new-content {
+  position: absolute;
+  width: 75%;
+  height: 80%;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.8); /* 透明度を調整 */
+  padding-bottom: 20px;
+}
+
+.page_title{
+  font-size: 25px;
+  font-weight: lighter 100;
+  color:white;
+  background-color: #555;
+  margin-bottom: 20px;
+  padding-left: 10px;
+}
+
+.cocktail_name{
+  font-size: 25px;
+  padding-left: 20px;
+  padding-right: 10px;
+}
+
+.cocktail_name_form{
+  width: 400px;
+  height: 40px;
+  border-radius: 0;
+  border: 1px solid gray;
+  margin-bottom: 30px;
+}
+
+
+/* 材料入力フィールド */
+.materials {
+  margin-bottom: 10px;
+  padding-left: 20px;
+}
+
+.form_name {
+  font-weight: bold; 
+  margin-right: 10px; 
+}
+.form{
+  height: 25px;
+  width: 200px;
+  border-radius: 0;
+  border: 1px solid gray;
+  margin-bottom: 20px;
+}
+
+.add_button{
+  margin-left: 20px;
+  display: inline-block;
+  padding: 10px 20px;
+  border: 1px solid black;
+  background-color: #555;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+.add_button:hover {
+  background-color: black;
+}
+
+.instruction-container{
+  position: absolute;
+  top: 25%;
+  left: 55%;
+}
+
+.instruction_name{
+  font-weight: bold; 
+  vertical-align: top;
+}
+
+.instruction{
+  height: 300px;
+  width: 350px;
+}
+
+.create-container {
+  position: absolute;
+  top: 90%;
+  left: 80%;
+}
+
+.create{
+  width: 150px;
+  height: 50px;
+  margin-left: 20px;
+  display: inline-block;
+  padding: 10px 20px;
+  border: 1px solid black;
+  background-color: rgba(159, 0, 0, 0.903);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.create:hover {
+  background-color: black;
+}
+
+
+.button-container {
+  position: absolute;
+  top: 125%;
+  left: 50%;
+}
+
+.return-to-top-button {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 1px solid white;
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.return-to-top-button:hover {
+  background-color: #555;
+}
