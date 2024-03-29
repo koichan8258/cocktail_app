@@ -84,3 +84,7 @@ gem 'devise'
 gem 'pry-rails'
 
 gem 'ransack'
+
+group :production do
+  gem 'pg'
+end
