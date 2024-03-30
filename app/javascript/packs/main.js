@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     e.preventDefault();
   
     const newMaterialDiv = document.createElement('div');
-    const materialIndex = materialsDiv.querySelectorAll('.materials').length;
+    const materialIndex = materialsDiv.children.length;
     newMaterialDiv.innerHTML = `
       <label for="recipe_material_name_${materialIndex}">Name</label>
       <input type="text" id="recipe_material_name_${materialIndex}" name="recipe[materials_attributes][][material_name]">
