@@ -6,7 +6,7 @@ development:
   <<: *default
   adapter: mysql2
   username: root
-  password:
+  password: i19990128k
   host: localhost
   database: cocktail_app_development
 
