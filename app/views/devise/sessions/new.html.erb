@@ -1,6 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+      <title>ログイン</title>
+  <%= stylesheet_link_tag 'show', media: 'all', 'data-turbolinks-track': 'reload' %>
+   <%= stylesheet_link_tag 'search', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= csrf_meta_tags %>
+</head>
+
+
+<%= render 'layouts/header' %>
+
+
+
+
+
 <div class="contents row">
   <div class="container">
-    <h2>Log in</h2>
+
+
+    <h2>LOG IN</h2>
     <%= form_with model: @user, url: user_session_path, id: 'new_user', class: 'new_user', local: true do |f| %>
       <div class="field">
         <%= f.label :email %><br />
@@ -25,3 +43,5 @@
     <% end %>
   </div>
 </div>
+
+<%= render 'layouts/footer' %>
