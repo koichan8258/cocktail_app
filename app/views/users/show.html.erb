@@ -1,6 +1,47 @@
-<div class="contents row">
-  <p><%= @nickname %>さんのレシピ一覧</p>
-  <% @recipes.each do |recipe| %>
-      <p><%= link_to recipe.cocktail_name, recipe_path(recipe) %></p>
-  <% end %>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>カクテルレシピ</title>
+  <%= stylesheet_link_tag 'user_show', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= csrf_meta_tags %>
+</head>
+
+<header>
+<%= render 'layouts/header' %>
+</header>
+
+<body>
+<div class="user-image-container">
+    <%= image_tag 'user.jpg', class: 'user-image' %>
+      <div class="user-content">
+        <div class="page_title">  
+          <h1>USER PAGE</h1>
+        </div>
+
+        <div class="contents">
+            <p class='user_recipe'><%= @nickname %>さんのレシピ一覧</p>
+            
+            <% @recipes.each_with_index do |recipe, index| %>
+              <% if index % 4 == 0 %>
+                <div class="recipe-column">
+              <% end %>
+              
+              <p><%= link_to recipe.cocktail_name, recipe_path(recipe), class:'recipes'%></p>
+              
+              <% if (index + 1) % 4 == 0 || index == @recipes.size - 1 %>
+                </div>
+              <% end %>
+            <% end %>
+            
+        </div>
+      </div>
+      <div class="button-container">
+          <%= link_to 'ホームへ戻る', root_path , class: 'return-to-top-button'%>
+      </div>
 </div>
+</body>
+
+<footer>
+<%= render 'layouts/footer' %>
+</footer>
+</html>

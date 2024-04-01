@@ -6,35 +6,38 @@
   <%= csrf_meta_tags %>
 </head>
 
-
+<header>
 <%= render 'layouts/header' %>
+</header>
 
 
-
-
+<body>
 <div class="login-image-container">
       <%= image_tag 'login.jpg', class: 'login-image' %>
-    <div class="search-content">
+    <div class="login-content">
       <div class="page_title">  
         <h1>LOG IN</h1>
       </div>
 
     <%= form_with model: @user, url: user_session_path, id: 'new_user', class: 'new_user', local: true do |f| %>
       <div class="field">
-        <%= f.label :email ,class:"email"%><br />
-        <%= f.email_field :email, autofocus: true %>
+        <%= f.label :"メールアドレス" ,class:"email"%><br />
+        <%= f.email_field :email, autofocus: true, class: "email_form" %>
       </div>
 
       <div class="field">
-        <%= f.label :password %><br />
-        <%= f.password_field :password, autocomplete: "off" %>
+        <%= f.label :"パスワード", class: "password"%><br/>
+        <%= f.password_field :password, autocomplete: "off", class: "password_form"%>
       </div>
 
       <div class="actions">
-        <%= f.submit "Log in", class:"button-container"%>
+        <%= f.submit "ログインする", class:"login_button"%>
       </div>
     <% end %>
   </div>
 </div>
+</body>
 
+<footer>
 <%= render 'layouts/footer' %>
+</footer>

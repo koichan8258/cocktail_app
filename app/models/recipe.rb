@@ -1,6 +1,6 @@
 class Recipe < ApplicationRecord
   validates :cocktail_name, presence: true
-  has_many :materials
+  has_many :materials, dependent: :destroy
   accepts_nested_attributes_for :materials
   belongs_to :user
 

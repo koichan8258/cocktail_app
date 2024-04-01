@@ -3,33 +3,52 @@
 <head>
   <title>カクテルレシピ</title>
   <%= stylesheet_link_tag 'show', media: 'all', 'data-turbolinks-track': 'reload' %>
-   <%= stylesheet_link_tag 'search', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= csrf_meta_tags %>
 </head>
 
-
+<header>
 <%= render 'layouts/header' %>
+</header>
 
  <div class="show-image-container">
       <%= image_tag 'cocktail.jpg', class: 'show-image' %>
-    <div class="search-content">
+    <div class="show-content">
       <div class="page_title">  
         <h1><%= @recipe.cocktail_name %></h1>
       </div>
+      <div class="materials">
       <h2>材料</h2>
+      </div>
       <ul>
-       <% @recipe.materials.each do |material| %>
-       <li><%= material.material_name %> - <%= material.quantity %></li>
-         <% end %>
-        </ul>
+    <ul class="materials-list">
+      <% @recipe.materials.each_with_index do |material, index| %>
+       <% if index < 2 %>
+        <li><%= material.material_name %> - <%= material.quantity %></li>
+        <% else %>
+        <li class="horizontal-display"><%= material.material_name %> - <%= material.quantity %></li>
+       <% end %>
+      <% end %>
+</ul>
+<% if @recipe.instruction.present? %>
+  <p><strong class="instruction">作り方</strong></p>
+  <p class="instruction_text"><%= @recipe.instruction %></p>
+<% end %>
+<p class='user_name'>レシピ作成者：<%= link_to @recipe.user.nickname, user_path(@recipe.user) %></p>
+<% if user_signed_in? && current_user == @recipe.user %>
+  <%= link_to '編集', edit_recipe_path(@recipe), class: 'edit-button' %>
+  <%= button_to '削除', recipe_path(@recipe), class: 'delete-button', method: :delete %>
+<% end %>
 
-<p><strong>作り方</strong></p>
-<p><%= @recipe.instruction %></p>
+    </div>
+<div class="button-container">
+  <%= link_to 'ホームへ戻る', root_path , class: 'return-to-top-button'%>
+</div>
+    </div>
 
-<p>レシピ作成者：<%= @recipe.user.nickname %></p>
-
-<%= link_to 'ホームへ戻る', root_path , class: 'return-to-top-button'%>
 </div>
 
 
+<footer>
 <%= render 'layouts/footer' %>
+</footer>
+</html>

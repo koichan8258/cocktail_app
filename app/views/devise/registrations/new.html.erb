@@ -1,35 +1,60 @@
-<div class="contents row">
-  <div class="container">
-    <h2>新規登録</h2>
-    <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>新規登録</title>
+  <%= stylesheet_link_tag 'sign_up', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= csrf_meta_tags %>
+</head>
 
-      <div class="field">
-        <%= f.label :nickname, "ニックネーム" %> <em>(6文字以上)</em><br/>
-        <%= f.text_field :nickname, autofocus: true, maxlength: "6" %>
-      </div>
+<header>
+  <%= render 'layouts/header' %>
+</header>
 
-      <div class="field">
-        <%= f.label :email, "メールアドレス" %><br/>
-        <%= f.email_field :email %>
+<body>
+  <div class="sign_up-image-container">
+    <%= image_tag 'login.jpg', class: 'sign_up-image' %>
+      <div class="sign_up-content">
+      <div class="page_title">  
+        <h1>SIGN UP</h1>
       </div>
+        <div class="container">
+          <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
 
-      <div class="field">
-        <%= f.label :password, "パスワード" %>
-        <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %>文字以上)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "off" %>
-      </div>
+            <div class="field">
+              <%= f.label :nickname, "ニックネーム", class:'form_name' %> <em>(6文字以上)</em><br/>
+              <%= f.text_field :nickname, autofocus: true, maxlength: "6", class:'form' %>
+            </div>
 
-      <div class="field">
-        <%= f.label :password_confirmation, "パスワード(確認)" %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "off" %>
-      </div>
+            <div class="field">
+              <%= f.label :email, "メールアドレス", class:'form_name' %><br/>
+              <%= f.email_field :email, class:'form'%>
+            </div>
 
-      <div class="actions">
-        <%= f.submit "登録" %>
+            <div class="field">
+              <%= f.label :password, "パスワード", class:'form_name' %>
+              <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %>文字以上)</em>
+              <% end %><br />
+              <%= f.password_field :password, autocomplete: "off", class:'form' %>
+            </div>
+
+            <div class="field">
+              <%= f.label :password_confirmation, "パスワード", class:'form_name' %> <em> (確認)</em><br />
+              <%= f.password_field :password_confirmation, autocomplete: "off", class:'form' %>
+            </div>
+
+            <div class="actions">
+              <%= f.submit "登録する", class:"sign_up_button"%>
+            </div>
+          <% end %>
+        </div>
       </div>
-    <% end %>
+    </div>
   </div>
-</div>
+
+  <footer>
+    <%= render 'layouts/footer' %>
+  </footer>
+</body>
+</html>

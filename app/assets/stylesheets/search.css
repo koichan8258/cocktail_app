@@ -21,7 +21,7 @@
 }
 
 .page_title {
-  font-size: 25px;
+  font-size: 3vw;
   font-weight: lighter 100;
   color: white;
   background-color: #555;
@@ -31,21 +31,21 @@
 
 .search_name {
   margin-left: 20px;
+  font-size: 1.5vw;
 }
 
 .search_form {
   width: 50%; /* 相対的な幅 */
   max-width: 700px; /* 最大幅を設定 */
-  height: 5%; /* 相対的な高さ */
-  max-height: 30px; /* 最大高さを設定 */
+  height: 4vh; /* 相対的な高さ */
   border-radius: 0;
   border: 1px solid gray;
   margin-left: 10%; /* 相対的なマージン */
-  margin-bottom: 2%; /* 相対的なマージン */
+  margin-bottom: 1.5vh; /* 相対的なマージン */
 }
 
 .search_button {
-  height: 100%; /* ボタンの高さを親要素に合わせる */
+  height: 4.5vh; /* ボタンの高さを親要素に合わせる */
   width: 30%; /* 相対的な幅 */
   max-width: 100px; /* 最大幅を設定 */
   background-color: black;
@@ -64,14 +64,22 @@
 } 
 
 .cocktail_name {
-  font-size: 2vw; /* フォームの幅に合わせて文字サイズを調整 */
+  font-size: 1.5vw; /* フォームの幅に合わせて文字サイズを調整 */
   margin-left: 20px;
   color: black;
   text-decoration: none;
 }
 
+
+.recipe-lists {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .list {
   list-style: none;
+  flex: 1 1 25%; /* 横に4つ表示するために25%の幅を設定 */
+  margin-bottom: 10px; /* 下部のマージンを設定 */
 }
 
 .cocktail_name:hover {
@@ -88,6 +96,14 @@
 
 .search-content h4:last-child {
   margin-bottom: 0;
+}
+
+.recipe-group {
+  display: flex;
+}
+
+.recipe-group > div {
+  margin-right: 20px; /* グループ間の余白を設定 */
 }
 
 .button-container {

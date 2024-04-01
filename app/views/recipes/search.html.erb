@@ -29,7 +29,8 @@
           <% @recipe.each do |recipe| %>
             <li class='list'>
               <div class="posted-content">
-                <%= link_to "#{recipe.cocktail_name}", recipe_path(recipe.id), class: 'cocktail_name'%>
+<%= link_to "#{recipe.cocktail_name}", recipe_path(recipe.id), class: 'cocktail_name' %>
+
               </div>
             </li>
           <% end %>
@@ -37,16 +38,23 @@
       </div>
     </div>
 
-    <div class="new-recipe-content">
-      <div class="page_title">
-      <h4>NEW COCKTAIL</h4></div>
-      <% @latest_recipes.each do |recipe| %>
+<div class="new-recipe-content">
+  <div class="page_title">
+    <h4>NEW COCKTAIL</h4>
+  </div>
+  
+  <% @latest_recipes.each_slice(2) do |group| %>
+    <div class="recipe-group">
+      <% group.each do |recipe| %>
         <div>
           <%= link_to recipe.cocktail_name, recipe_path(recipe), class: 'cocktail_name' %>
           <!-- レシピの詳細へのリンクを表示 -->
         </div>
       <% end %>
     </div>
+  <% end %>
+</div>
+
 
     <div class="button-container">
       <%= link_to 'トップページへ戻る', root_path, class: 'return-to-top-button' %>

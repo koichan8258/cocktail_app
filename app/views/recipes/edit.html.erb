@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>新しいページ</title>
+  <%= stylesheet_link_tag 'new_page', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <header>
+    <%= render 'layouts/header' %>
+  </header>
+
+    <div class="new-image-container">
+      <%= image_tag 'cocktail_recipe.jpg', class: 'new-image' %>
+        <div class="new-content">
+         <%= render 'form' %>
+        </div>
+        <div class="button-container">
+         <%= link_to 'トップページに戻る', root_path, class: 'return-to-top-button'%>
+        </div>
+    </div>
+  <footer>
+    <%= render 'layouts/footer' %>
+  </footer>
+</body>
+</html>
