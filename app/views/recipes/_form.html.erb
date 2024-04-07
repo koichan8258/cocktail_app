@@ -1,62 +1,25 @@
-      <div class="page_title">
-      <h3>RECIPE CREATE</h3></div>
+<div class="page_title">
+  <h3>RECIPE CREATE</h3>
+</div>
 
 <%= form_with model: @recipe, local: true do |form| %>
   <%= form.label :cocktail_name, 'カクテル名', class: "cocktail_name" %>
   <%= form.text_field :cocktail_name, class: "cocktail_name_form"%>
 
-<div id="materials-container">
-  <%= form.fields_for :materials, class: "materials" do |material_form| %>
-    <div class="materials">
-      <%= material_form.label :material_name, '材料', class: "form_name" %>
-      <%= material_form.text_field :material_name, class: "form" %>
+  <div id="materials-container">
+    <% @recipe.materials.each_with_index do |material, index| %>
+      <div class="materials">
+        <%= form.label "recipe_material_name_#{index}", '材料', class: "form_name" %>
+        <%= form.text_field "materials_attributes[#{index}][material_name]", class: "form" %>
 
-      <%= material_form.label :quantity, '分量', class: "form_name"  %>
-      <%= material_form.text_field :quantity, class: "form"%>
-    </div>
-  <% end %>
-</div>
+        <%= form.label "recipe_quantity_#{index}", '分量', class: "form_name"  %>
+        <%= form.text_field "materials_attributes[#{index}][quantity]", class: "form" %>
+      </div>
+    <% end %>
+  </div>
   
-  <%= button_tag '材料を追加する', type: 'button', id: 'add-material-button', class:"add_button" %>
-  <%= button_tag '材料を減らす', type: 'button', id: 'remove-material-button', class:"add_button" %>
-
- <div class="instruction-container">
-  <%= form.label :instruction, '作り方',class: "instruction_name" %>
-  <%= form.text_area :instruction,class: "instruction" %>
- </div>
- <div class="create-container">
-  <%= form.submit 'レシピを作成する', class:"create" %>
- </div>
+  <div class="instruction-container">
+    <%= form.label :instruction, '作り方',class: "instruction_name" %>
+    <%= form.text_area :instruction,class: "instruction" %>
+  </div>
 <% end %>
-
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const addMaterialButton = document.getElementById('add-material-button');
-    const materialsContainer = document.getElementById('materials-container');
-
-    addMaterialButton.addEventListener('click', function() {
-      const materialFields = document.createElement('div');
-      materialFields.classList.add('materials');
-
-    materialFields.innerHTML = `
-       <label for="recipe_material_name" class="form_name">材料</label>
-       <input type="text" id="recipe_material_name" name="recipe[materials_attributes][][material_name]" class="form">
-
-       <label for="recipe_quantity" class="form_name">分量</label>
-       <input type="text" id="recipe_quantity" name="recipe[materials_attributes][][quantity]" class="form">
-      `;
-
-      materialsContainer.appendChild(materialFields);
-    });
-
-    const removeMaterialButton = document.getElementById('remove-material-button');
-
-    removeMaterialButton.addEventListener('click', function() {
-      const materials = document.getElementsByClassName('materials');
-      if (materials.length > 2) {
-        materialsContainer.removeChild(materials[materials.length-1]);
-      }
-    });
-  });
-</script>

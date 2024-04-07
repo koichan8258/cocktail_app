@@ -7,12 +7,10 @@ class RecipesController < ApplicationController
     @recipes = Recipe.all
   end
 
-
   def new
     @recipe = Recipe.new
-    2.times { @recipe.materials.build } 
+    4.times { @recipe.materials.build }
   end
-
 
   def create
     @recipe = current_user.recipes.build(recipe_params)
@@ -23,28 +21,15 @@ class RecipesController < ApplicationController
     end
   end
 
-
-  def update
-    @recipe = Recipe.find(params[:id])
-    if @recipe.update(recipe_params)
-      redirect_to @recipe
-    else
-      render :edit
-    end
-  end
-
-
   def show
     @recipe = Recipe.find(params[:id])
   end
-
 
   def search
     @latest_recipes = Recipe.order(created_at: :desc).limit(5)
     @q = Recipe.ransack(params[:q])
     @recipe = @q.result(distinct: true)
   end
-
 
   def destroy
     @recipe = Recipe.find_by(id: params[:id])
@@ -62,13 +47,11 @@ class RecipesController < ApplicationController
     end
   end
 
-
   def edit
     @recipe = Recipe.find(params[:id])
-    @recipe.materials.build if @recipe.materials.empty?  # 新しい素材を追加するための行を追加
+    @recipe.materials.build if @recipe.materials.length < 4
   end
 
-  
   def update
     @recipe = Recipe.find(params[:id])
     if @recipe.update(recipe_params)
@@ -77,8 +60,6 @@ class RecipesController < ApplicationController
       render :edit
     end
   end
-  
-
 
   private
 
@@ -95,5 +76,4 @@ class RecipesController < ApplicationController
       redirect_to action: :index
     end
   end
-  
 end

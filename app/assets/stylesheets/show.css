@@ -42,12 +42,29 @@
   position: absolute;
   margin-top: 10%;
   left: 5%;
-  list-style-type: none; /* リストアイテムのデフォルトのリストスタイルを無効にする */
+  list-style-type: none;
 }
 
 .materials-list li {
-  font-size: 1.8vw; /* 適切なフォントサイズを設定してください */
+  font-size: 1.8vw;
+  margin-right: 20px;
 }
+
+.horizontal-list {
+  position: absolute;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 10%;
+  left: 50%;
+}
+
+.horizontal-list li {
+  margin-right: 20px;
+  font-size: 1.8vw;
+  list-style-type: none;
+}
+
+
 
 .instruction {
   position: absolute;
