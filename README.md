@@ -1,24 +1,45 @@
-# README
+# アプリケーション名	
+  COCKTAIL APP
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# アプリケーション概要
+  カクテルのレシピをリキュールで検索、ログインユーザーによるレシピ投稿・編集
 
-Things you may want to cover:
+# URL	
+  http://18.176.152.54:3000/
 
-* Ruby version
+# テスト用アカウント	
+  ・ Basic認証パスワード：8258
+  ・ Basic認証ID：koide
+  ・ メールアドレス：
+  ・ パスワード：
 
-* System dependencies
+# 利用方法
+  ・ レシピ検索：検索するリキュールを入力、カクテル名をクリックするとレシピを閲覧できる。
+  ・ レシピ投稿（ログインユーザーのみ）：レシピ投稿ボタンを押し、カクテル名、材料・分量、作り方（任意）を入力し、作成ボタンにてレシピを登録することができる。
+  
+# アプリケーションを作成した背景	
+  ストレスを抱えやすい社会において、いかにストレス発散を行うかが重要となる。そこで、お酒を飲むことがストレス発散となる人や、業務上カクテルを作らないといけない人へ向けたカクテル検索レシピを作成することなった。
 
-* Configuration
+# 実装予定の機能	
+  Java Scriptを用いた以下の機能を実装中。
+  ・材料フォームの個数の変更
+  ・ユーザー毎のお気に入り登録
 
-* Database creation
+# データベース設計	
+![date](https://github.com/koichan8258/cocktail_app/assets/159118944/ef59f0ca-143f-4cf8-9dd0-b5be859fcff5)
 
-* Database initialization
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+# 画面遷移図
+![routes](https://github.com/koichan8258/cocktail_app/assets/159118944/a30ccf5e-1a57-49fb-a5ea-74195e4f8814)
 
-* Deployment instructions
+# 開発環境	
 
-* ...
+# ローカルでの動作方法	git cloneしてから、ローカルで動作をさせるまでに必要なコマンドを記載。
+
+
+# 工夫したポイント	制作背景・使用技術・開発方法・タスク管理など、企業へＰＲしたい事柄を記載。
+
+# 改善点	より改善するとしたらどこか、それはどのようにしてやるのか。
+
+# 制作時間	アプリケーションを制作するのにかけた時間。
