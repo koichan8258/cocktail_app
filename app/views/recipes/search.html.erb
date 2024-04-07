@@ -43,7 +43,7 @@
     <h4>NEW COCKTAIL</h4>
   </div>
   
-  <% @latest_recipes.each_slice(2) do |group| %>
+  <% @latest_recipes.each_slice(4) do |group| %>
     <div class="recipe-group">
       <% group.each do |recipe| %>
         <div>
@@ -54,6 +54,7 @@
     </div>
   <% end %>
 </div>
+
 
 
     <div class="button-container">

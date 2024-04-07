@@ -26,7 +26,7 @@ class RecipesController < ApplicationController
   end
 
   def search
-    @latest_recipes = Recipe.order(created_at: :desc).limit(5)
+    @latest_recipes = Recipe.order(created_at: :desc).limit(4)
     @q = Recipe.ransack(params[:q])
     @recipe = @q.result(distinct: true)
   end
@@ -69,7 +69,7 @@ class RecipesController < ApplicationController
   
 
   def set_latest_recipes
-    @latest_recipes = Recipe.order(created_at: :desc).limit(3)
+    @latest_recipes = Recipe.order(created_at: :desc).limit(4)
   end
 
   def move_to_index
