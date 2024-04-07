@@ -22,17 +22,14 @@
       <ul>
 <div class="materials-list">
   <% @recipe.materials.each_with_index do |material, index| %>
-    <% if index < 2 %>
-      <li><%= material.material_name %> - <%= material.quantity %></li>
-    <% else %>
-      <% if index == 2 %>
-        </ul> <!-- 最初のulを閉じる -->
-        <ul class="horizontal-list"> <!-- 新しいulを追加 -->
-      <% end %>
-      <li><%= material.material_name %> - <%= material.quantity %></li>
+    <% if index == 2 %>
+      </ul> <!-- 最初のulを閉じる -->
+      <ul class="horizontal-list"> <!-- 新しいulを追加 -->
     <% end %>
+    <li><%= material.material_name %> 　　 <%= material.quantity %></li>
   <% end %>
 </ul>
+
 
 
 <% if @recipe.instruction.present? %>

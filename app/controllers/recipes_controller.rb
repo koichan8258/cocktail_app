@@ -66,6 +66,7 @@ class RecipesController < ApplicationController
   def recipe_params
     params.require(:recipe).permit(:cocktail_name, :instruction, materials_attributes: [:id, :material_name, :quantity])
   end
+  
 
   def set_latest_recipes
     @latest_recipes = Recipe.order(created_at: :desc).limit(3)

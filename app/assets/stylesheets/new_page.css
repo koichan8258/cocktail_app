@@ -29,6 +29,10 @@
   padding-left: 10px;
 }
 
+.cocktail_names{
+  display: flex;
+}
+
 .cocktail_name{
   font-size: 25px;
   padding-left: 20px;
@@ -36,7 +40,7 @@
 }
 
 .cocktail_name_form{
-  width: 400px;
+  width: 350px;
   height: 40px;
   border-radius: 0;
   border: 1px solid gray;
@@ -137,4 +141,12 @@
 
 .return-to-top-button:hover {
   background-color: #555;
+}
+
+
+
+#error_explanation {
+  font-size: small;
+  color: rgba(220, 20, 20, 0.716);
+  padding-left: 5%;
 }

@@ -19,11 +19,7 @@
          <%= link_to 'トップページに戻る', root_path, class: 'return-to-top-button'%>
         </div>
     </div>
-  <%= form_with model: @recipe, local: true do |form| %>
-    <div class="create-container">
-    <%= form.submit 'レシピを作成する', class:"create" %>
-  </div>
-<% end %>
+    
   <footer>
     <%= render 'layouts/footer' %>
   </footer>

@@ -3,23 +3,38 @@
 </div>
 
 <%= form_with model: @recipe, local: true do |form| %>
+  <% if @recipe.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+      <ul>
+      <% @recipe.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="cocktail_names">
   <%= form.label :cocktail_name, 'カクテル名', class: "cocktail_name" %>
-  <%= form.text_field :cocktail_name, class: "cocktail_name_form"%>
+  <%= form.text_field :cocktail_name, class: "cocktail_name_form", value: @recipe.cocktail_name%></div>
 
   <div id="materials-container">
     <% @recipe.materials.each_with_index do |material, index| %>
       <div class="materials">
         <%= form.label "recipe_material_name_#{index}", '材料', class: "form_name" %>
-        <%= form.text_field "materials_attributes[#{index}][material_name]", class: "form" %>
+        <%= form.text_field "materials_attributes[#{index}][material_name]", class: "form", value: material.material_name %>
 
         <%= form.label "recipe_quantity_#{index}", '分量', class: "form_name"  %>
-        <%= form.text_field "materials_attributes[#{index}][quantity]", class: "form" %>
+        <%= form.text_field "materials_attributes[#{index}][quantity]", class: "form", value: material.quantity %>
       </div>
     <% end %>
   </div>
   
   <div class="instruction-container">
     <%= form.label :instruction, '作り方',class: "instruction_name" %>
-    <%= form.text_area :instruction,class: "instruction" %>
+    <%= form.text_area :instruction,class: "instruction", value: @recipe.instruction %>
+  </div>
+
+      <div class="create-container">
+    <%= form.submit 'レシピを作成する', class:"create" %>
   </div>
 <% end %>
