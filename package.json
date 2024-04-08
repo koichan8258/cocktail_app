@@ -11,7 +11,7 @@
     "webpack-dev-server": "^3"
   },
   "scripts": {
-    "build": "webpack"
+    "webpack": "webpack"
     }
 }
 
