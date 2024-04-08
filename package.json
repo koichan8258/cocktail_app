@@ -1,4 +1,5 @@
 {
+  "license": "UNLICENSED",
   "dependencies": {
     "@babel/plugin-proposal-private-methods": "^7.18.6",
     "@hotwired/turbo-rails": "^8.0.4",
